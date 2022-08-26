@@ -1,9 +1,10 @@
+import Link from "next/link";
 import { useState } from "react";
 import { InnerUl } from "../styles/Accordion.styles";
-import { Subject, Unit } from "../types/types";
+import { SubjectName } from "../types/types";
 
 type Props = {
-  subjects: Subject[];
+  subjects: SubjectName[];
   isActive: boolean;
 };
 
@@ -11,7 +12,11 @@ const Accordion = ({ subjects, isActive }: Props) => {
   return (
     <InnerUl isActive={isActive} items={subjects.length + 1}>
       {subjects.length
-        ? subjects.map(({ id, name }) => <li key={id}>{name}</li>)
+        ? subjects.map(({ id, name }) => (
+            <Link href={`/temat/${id}`}>
+              <li key={id}>{name}</li>
+            </Link>
+          ))
         : null}
     </InnerUl>
   );

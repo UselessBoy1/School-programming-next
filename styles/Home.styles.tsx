@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import BgImg from "../public/clement-helardot-95YRwf6CNw8-unsplash.jpg";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -9,10 +8,6 @@ export const Wrapper = styled.div`
   justify-content: flex-start;
   align-items: center;
   user-select: none;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(${BgImg.src});
-  background-repeat: no-repeat;
-  background-size: cover;
   overflow: hidden;
 `;
 
