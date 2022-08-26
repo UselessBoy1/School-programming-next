@@ -212,7 +212,7 @@ const Subject = ({ subject: { name, description, code } }: Props) => {
 
   const handleScrollUp = () => {
     if (scrollRef.current)
-      scrollRef.current.scrollIntoView({ behavior: "smooth" });
+      scrollRef.current.scrollIntoView({ block: "nearest", behavior: "smooth", inline: 'start'});
   };
 
   return (

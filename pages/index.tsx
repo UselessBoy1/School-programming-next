@@ -1,5 +1,4 @@
 import type { GetStaticProps } from "next";
-import Head from "next/head";
 import { useState } from "react";
 import Accordion from "../components/Accordion";
 import { fetchUnits } from "../database/dbControllers";
@@ -22,9 +21,6 @@ const Home = ({ units }: Props) => {
 
   return (
     <>
-      <Head>
-        <title>Programowanie i Algorytmika</title>
-      </Head>
       <Wrapper>
         <ContainerUl>
           {units.map(({ id, title, subjects }) => (
