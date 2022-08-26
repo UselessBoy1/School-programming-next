@@ -16,13 +16,13 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     background-color: darkgray;
     width: 100%;
-  height: 100vh;
-  user-select: none;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    height: 100vh;
+    user-select: none;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(${BgImg.src});
-  background-repeat: no-repeat;
-  background-size: cover;
-  overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
   }
   
   a, button {
