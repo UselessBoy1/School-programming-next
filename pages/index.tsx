@@ -1,50 +1,25 @@
-import type { NextPage } from "next";
+import type { GetStaticProps } from "next";
 import Head from "next/head";
+import { useState } from "react";
 import Accordion from "../components/Accordion";
-import { Wrapper, ContainerUl } from "../styles/Home.styles";
-import { Unit } from "../types/unit";
+import { fetchUnits } from "../database/dbControllers";
+import { Wrapper, ContainerUl, UnitLi } from "../styles/Home.styles";
+import { Unit } from "../types/types";
 
-const data: Unit[] = [
-  {
-    title: "Grafy",
-    topics: [
-      "Stopień grafu",
-      "Najkrótsza ścieżka w grafie nieważonym - BFS",
-      "Dowolna ścieżka w grafie - DFS",
-      "BFS - lista",
-      "BFS - macierz",
-      "DFS - lista",
-      "DFS - macierz",
-      "Lista sąsiedztwa",
-      "Macierz sąsiedztwa",
-    ],
-  },
-  {
-    title: "Struktury danych",
-    topics: ["Lista dwukierunkowa", "Lista jednokierunkowa", "Kolejka", "Stos"],
-  },
-  {
-    title: "Grafy",
-    topics: [
-      "Stopień grafu",
-      "Najkrótsza ścieżka w grafie nieważonym - BFS",
-      "Dowolna ścieżka w grafie - DFS",
-      "BFS - lista",
-      "BFS - macierz",
-      "DFS - lista",
-      "DFS - macierz",
-      "Lista sąsiedztwa",
-      "Macierz sąsiedztwa",
-    ],
-  },
-  {
-    title: "Struktury danych",
-    topics: ["Lista dwukierunkowa", "Lista jednokierunkowa", "Kolejka", "Stos"],
-  },
-];
+type Props = {
+  units: Unit[];
+};
 
+const Home = ({ units }: Props) => {
+  const [activeUnitId, setActiveUnitId] = useState<number | null>(null);
 
-const Home: NextPage = () => {
+  const isUnitActive = (unitId: number): boolean => activeUnitId == unitId ? true : false;
+
+  const handleUnitClick = (unitId: number): void => {
+    if (activeUnitId == unitId) setActiveUnitId(null);
+    else setActiveUnitId(unitId);
+  }
+
   return (
     <>
       <Head>
@@ -52,13 +27,21 @@ const Home: NextPage = () => {
       </Head>
       <Wrapper>
         <ContainerUl>
-          {data.map(({ title, topics }, i) => (
-            <Accordion key={i} title={title} topics={topics} />
+          {units.map(({ id, title, subjects }) => (
+            <div key={id}>
+              <UnitLi onClick={() => handleUnitClick(id)}>{title}</UnitLi>
+              <Accordion subjects={subjects} isActive={isUnitActive(id)} />
+            </div>
           ))}
         </ContainerUl>
       </Wrapper>
     </>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const units = await fetchUnits();
+  return { props: { units } };
 };
 
 export default Home;

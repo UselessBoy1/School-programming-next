@@ -1,24 +1,19 @@
 import { useState } from "react";
-import { InnerUl, UnitLi } from "../styles/Accordion.styles";
-import { Unit } from "../types/unit";
+import { InnerUl } from "../styles/Accordion.styles";
+import { Subject, Unit } from "../types/types";
 
-const Accordion = ({ title, topics }: Unit) => {
-  const [isActive, setIsAcitve] = useState<boolean>(false);
+type Props = {
+  subjects: Subject[];
+  isActive: boolean;
+};
+
+const Accordion = ({ subjects, isActive }: Props) => {
   return (
-    <>
-      <UnitLi
-        onClick={() => {
-          setIsAcitve(!isActive);
-        }}
-      >
-        {title}
-      </UnitLi>
-      <InnerUl isActive={isActive} items={topics.length + 1}>
-        {topics.map((subject) => (
-          <li key={subject}>{subject}</li>
-        ))}
-      </InnerUl>
-    </>
+    <InnerUl isActive={isActive} items={subjects.length + 1}>
+      {subjects.length
+        ? subjects.map(({ id, name }) => <li key={id}>{name}</li>)
+        : null}
+    </InnerUl>
   );
 };
 

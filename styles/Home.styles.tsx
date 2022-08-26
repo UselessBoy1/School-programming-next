@@ -36,3 +36,14 @@ export const ContainerUl = styled.ul`
     font-size: 2rem;
   }
 `;
+
+export const UnitLi = styled.li`
+  border-radius: 20px;
+  background-color: lightgray;
+  padding: 10px;
+  font-weight: bold;
+  transition: 0.5s;
+  &:hover {
+    background-color: #9b9b9b;
+  }
+`;
