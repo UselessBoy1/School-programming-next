@@ -12,7 +12,7 @@ export const InnerUl = styled.ul<InnerUlProps>`
   max-height: ${({ isActive, items }) => (isActive ? `${items * 3}em` : "0")};
 
   overflow: hidden;
-  transition: 0.6s;
+  transition: 0.6s ease;
   margin: 10px;
   padding: 0 5px;
 

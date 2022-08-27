@@ -24,7 +24,7 @@ const NavBar = styled.nav`
     font-size: 2rem;
   }
   h1 {
-    margin: 0;
+    margin: 0 35px;
   }
 `;
 
@@ -33,6 +33,7 @@ interface ArrowProps {
 }
 
 const Arrow = styled.div<ArrowProps>`
+  opacity: 0.8;
   position: absolute;
   top: ${({ isVertical }) => (isVertical ? "30px" : "50px")};
   left: ${({ isVertical }) => (isVertical ? "40%" : "5%")};
@@ -74,16 +75,16 @@ const Container = styled.main`
   position: relative;
   transition: 0.5s;
   border-radius: 10px;
-  width: 95vw;
-  height: 85vh;
+  width: 95%;
+  height: 75vh;
   overflow: scroll;
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
   }
 
-  @media (min-width: 700px) {
-    width: 800px;
+  @media (min-width: 800px) {
+    width: 900px;
     height: 800px;
   }
 `;
@@ -127,7 +128,7 @@ interface CopyButtonProps {
   readonly isCopied: boolean;
 }
 
-const CopyButton = styled.button<CopyButtonProps>`
+const CopyButton = styled.div<CopyButtonProps>`
   position: absolute;
   top: 15px;
   right: 15px;
@@ -155,7 +156,7 @@ type Props = {
 
 const ScrollButton = styled.div`
   position: sticky;
-  bottom: 15%;
+  bottom: 16%;
   left: 80%;
   width: 30px;
   height: 30px;

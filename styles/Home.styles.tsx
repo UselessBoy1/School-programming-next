@@ -37,7 +37,7 @@ export const UnitLi = styled.li`
   background-color: lightgray;
   padding: 10px;
   font-weight: bold;
-  transition: 0.5s;
+  transition: 0.5s ease;
   &:hover {
     background-color: #9b9b9b;
   }
