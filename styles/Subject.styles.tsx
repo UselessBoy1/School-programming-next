@@ -58,6 +58,7 @@ export const CodeWrapper = styled.section`
   background-color: rgb(40, 44, 52);
   padding: 10px 20px;
   border-radius: 10px;
+  user-select: text;
 `;
 
 interface CopyButtonProps {
